@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Module Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link re="stylesheet" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+   <script src="js/app.js"></script>
+  <script src="js/jq.js"></script>
+</head>
+<body ng-app="app">
+
+<div class="container">
+  <h1>Module Website<small> Web Application Development</small></h1>
+  
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#w1">Week 1</a></li>
+    <li><a data-toggle="tab" href="#menu2">Week 2</a></li>
+    <li><a data-toggle="tab" href="#menu3">Week 3</a></li>
+  </ul>
+
+  <div class="tab-content" ng-controller="ctrl">
+    <div id="home" class="tab-pane fade in active"><!--home tab content -->
+      <h3>Content Summary Table</h3>
+      <p>Find quick links to Module content below.</p>
+
+      <!--======================================================================-->
+      <!--=====================Table=========================================== -->
+      <!--=====================================================================-->
+      <table class="table table-hover table-inverse" >
+          <thead>
+            <tr>
+              <th>Week #</th>
+              <th>Lab #</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>pdf</th>
+              <th>zip</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat = "lab in weeks">
+             
+              <td>{{lab.week}}</td>
+              <td>{{lab.lab}}</td>
+              <td>{{lab.title}}</td>
+              <td>{{lab.desc}}</td>
+              <td><code>lab{{lab.lab}}.pdf</code><a href="#" data-toggle="tooltip" data-placement="top" title="View {{lab.title}} .pdf"><span data-toggle="modal" data-target="#{{lab.lab}}" class="glyphicon glyphicon-open-file"></span></a></td>
+              <td><code>{{lab.lab}}.zip</code><a href="{{lab.zip}}" data-toggle="tooltip" data-placement="top" title="Download completed lab .zip file"><span class="glyphicon glyphicon-download-alt"></span></a></td>
+           
+            </tr>
+          </tbody>
+ 
+      </table>
+      <!-- Modal s-->
+  <div ng-repeat="lab in weeks">
+  <div class="modal fade" id="{{lab.lab}}" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div   class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+           <object type="application/pdf" data="{{lab.pdf}}" width="500" height="500">
+                          </object>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  
+
+
+
+
+
+
+
+
+
+
+       <!--======================================================================-->
+      <!--===============================end of table=================================== -->
+      <!--=====================================================================-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <div id="accordion" role="tablist" aria-multiselectable="true">
+             <div class="card">
+                    <div class="card-header" role="tab" id="headingOne">
+                      <h5 class="mb-0">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Link to show more content
+                      </a>
+                      </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne"><!-- home first collapse content-->
+                      <div class="card-block">
+                          more content that will be shown
+                      </div>
+                    </div>
+              </div><!--end of card -->
+
+              <div class="card">
+                  <div class="card-header" role="tab" id="headingTwo">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Link to show more content 2
+                      </a>
+                    </h5>
+                  </div>
+
+                  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="card-block">
+                      more content that will be shown2
+                    </div>
+                  </div>
+              </div><!--end of card -->
+        </div><!--end of accordian --> 
+    </div><!--end of #home div -->
+
+    <div id="menu1" class="tab-pane fade">
+      <h3>Week 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+
+
+    <div id="menu3" class="tab-pane fade">
+      <div class="row">
+
+              <h3>Week 3</h3>
+              <p>this is a summary of week three
+              object constructor and new key word also learned deter and async.</p>
+              <p>in the lecture we learned about testing software, jira bugzilla etc...</p>
+      </div>
+      <div class="row">
+          <div id="accordion2" role="tablist" aria-multiselectable="true">
+            <div class="col-md-6">
+            <div class="card"><!--start of card -->
+                <div class="card-header" role="tab" id="headingOne"><!--start of card header-->
+                      <h5 class="mb-0">
+                      <a data-toggle="collapsed" data-parent="#accordion2" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                      <h3>Lab Instructions</h3>
+                      <h4>Second Objects Lab</h4>
+                       </a>
+                      </h5>
+                </div><!--end of card header-->
+
+                <div id="collapse3" class="collapse in" role="tabpanel" aria-labelledby="headingOne"><!--start of card contents-->
+                    <div class="card-block">
+               
+                          <object type="application/pdf" data="assets/labs/lab3/objects_lab_2/JavaScript Objects Exercise 2.pdf" width="500" height="500">
+                          </object>
+                    </div>
+                </div><!--end of card contents-->
+            </div><!--end of card-->
+            </div><!--end of col 6 -->
+            <div class="col-md-6">
+            <div class="card"><!--start of card-->
+                <div class="card-header" role="tab" id="headingTwo"><!--start of card header-->
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                       <h3>Code and Results</h3>
+                    <h4>Second Objects Lab - Object Constructor</h4>
+                      </a>
+                    </h5>
+                </div><!--end of card header-->
+
+                <div id="collapse4" class="collapse" role="tabpanel" aria-labelledby="headingTwo"><!--start of card contents-->
+                  <div class="card-block">
+                        <p data-height="500" data-theme-id="light" data-slug-hash="BQmPLx" data-default-tab="css,result" data-user="agfoghlaim" data-embed-version="2" data-pen-title="Objects Lab 2-constructor" class="codepen">See the Pen <a href="http://codepen.io/agfoghlaim/pen/BQmPLx/">Objects Lab 2-constructor</a> by moh (<a href="http://codepen.io/agfoghlaim">@agfoghlaim</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+                        <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+                         <div id="editor">some text</div>
+  
+                  </div>
+               </div><!--end of card contents-->
+            </div><!--end of card -->
+            </div><!--end of col6>
+          </div> <!--end of card accordian-->
+        </div><!--end of row-->
+    </div><!--end of menu-->
+
+
+
+
+</div><!--end of page container-->
+</body>
+</html>
